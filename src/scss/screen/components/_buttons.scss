@@ -1,0 +1,178 @@
+/*
+Buttons
+
+A majority of buttons in the site are built from the same base class.
+
+Markup: components/buttons.hbs
+
+:hover     - Highlight the button when hovered.
+:disabled  - Make the button change appearance to reflect it being disabled.
+:active    - "Press" the button down when clicked.
+.Button--delete - delete
+.Button--link - link
+.can-request - is prep to show loading
+.can-request.is-processing - shows loading animation
+
+Styleguide 2.buttons
+*/
+
+/**
+ * 2. Normalize `line-height`. For `input`, it can't be changed from `normal` in Firefox 4+.
+ * 3. Prevent button text from being selectable.
+ * 4. Make sure `input` will wrap text across multiple lines.
+ */
+
+
+.Button {
+  appearance: none;
+  background: swatch(primary, blue-light);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal; // 2
+  margin: 0;
+  padding: 0.5em 1em;
+  text-align: center;
+  text-decoration: none;
+  user-select: none; // 3
+  white-space: normal; // 4
+
+  // Remove excess padding and border in Firefox 4+
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+
+  // Work around a Firefox/IE bug where the transparent `button` background results in a loss of the default `button` focus styles.
+
+  &:focus {
+    outline: none;
+    background: swatch(primary, blue);
+  }
+
+  // UI states
+
+  &:hover {
+    text-decoration: none;
+    border-color: swatch(primary, blue);
+  }
+
+  &:active {
+    border-color: swatch(primary, blue);
+    position: relative;
+    top: 1px;
+  }
+
+  &:disabled,
+  &.is-disabled {
+    cursor: default;
+    opacity: 0.6;
+
+    &:hover {
+      text-decoration: none;
+      border-color: transparent;
+    }
+  }
+
+  &:visited {}
+
+  &--delete {
+    background-color: swatch(ui, error);
+    color: #fff;
+
+    &:hover, &:active {
+      border-color: darken( swatch(ui, error), 20% );
+    }
+  }
+
+  &--link {
+    background-color: transparent;
+    color: swatch(primary, blue);
+
+    &:hover, &:active {
+      border-color: transparent;
+    }
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  &.can-request {
+  // after is the loading element
+    &:after {
+      background: transparent;
+      border-radius: 50%;
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top:  50%;
+      margin-left: -15px;
+      margin-top: -15px;
+      opacity: 0;
+
+      transform: scale(0.1);
+      transform-origin: 50% 50%;
+      box-shadow: 0 0 0 #fff;
+      border-top: 4px solid swatch(primary, blue);
+      border-right: 4px solid swatch(primary, green);
+      border-bottom: 4px solid swatch(primary, green);
+      border-left: 4px solid swatch(primary, green);
+
+      width: 30px;
+      height: 30px;
+    }
+
+    &.is-processing {
+
+      color: transparent;
+      cursor: wait;
+      border-color: transparent;
+      background-color: transparent;
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+      vertical-align: middle;
+
+      transition-property: background color;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+
+      &:hover {
+        text-decoration: none;
+        border-color: transparent;
+      }
+
+      &:after {
+        opacity: 1;
+        transition-property: width height padding box-shadow border-width background opacity;
+        transition-duration: 400ms;
+        transition-timing-function: ease-in-out;
+        transform: scale(1);
+        animation: spin-360 600ms infinite linear;
+        animation-delay: .2s;
+
+      }
+    }
+  }
+
+}
+
+@keyframes spin-360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

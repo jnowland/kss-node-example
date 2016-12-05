@@ -1,0 +1,26 @@
+/*
+KSS Mixin that alters rules when they are in the styleguide.
+
+Mainly used for position fixed
+*/
+
+@mixin kss() {
+  .kss-modifier__example & {
+    @content;
+  }
+}
+
+/*
+Create KSS Color Pallet with comments for the documentation
+*/
+
+@function create-kss-colors($pallet, $naming-convention: '.') {
+  $class-list: '';
+
+  @each $name, $color in map-get($colours, $pallet) {
+    $class-list: '#{$naming-convention}#{$name} - #{$name}'+'\A'+$class-list;
+  }
+
+  @return #{$class-list};
+
+}

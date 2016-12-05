@@ -1,0 +1,57 @@
+/* Custom Client Colors*/
+
+#kss-node {
+  background: #fff;
+}
+@media screen and (max-width: 768px) {
+  #kss-node .kss-sidebar {
+    background: #497ef4;
+  }
+}
+@media screen and (min-width: 769px) {
+  #kss-node {
+    background: #fff;
+    background: linear-gradient(to right, #497ef4, #497ef4 20%, #fff 20%) 0 0 repeat-y;
+}
+
+#kss-node .kss-doc-title {
+  color: #fff;
+}
+
+.kss-doc-clientname {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+#kss-node .kss-modifier__heading {
+  background-color: #35333f;
+  color: white;
+}
+
+#kss-node .kss-title__permalink {
+  color: #497ef4;
+}
+
+@media screen and (min-width: 769px) {
+  #kss-node .kss-nav__menu-child {
+    border-top: 1px solid #00ffda;
+    border-bottom: 1px solid #00ffda;
+  }
+  #kss-node .kss-header {
+    margin-top: 15px;
+  }
+}
+
+#kss-node .kss-nav__ref {
+  color: rgba(0, 255, 218, 0.5);
+}
+
+.is-homepage .kss-section ul {
+  list-style-type: none;
+}
+
+#kss-node .kss-markup {
+  overflow: scroll;
+  max-height: 300px;
+}

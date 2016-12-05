@@ -1,0 +1,100 @@
+/*  ==========================================================================
+    Design Element: Colours Varibles
+    ========================================================================== */
+
+/*
+Colour Pallets
+
+Below is a list of all colours used. We ususally use: Greys, Primary and UI.
+With tones we name them, lightest,lighter,light,base,dark,darker,darkest
+
+Styleguide 1.colourPalette
+*/
+
+/*
+How to load a colour from the palette
+
+see: http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+*/
+
+@function swatch($palette, $tone: 'base') {
+  @return map-get(map-get($colours, $palette), $tone);
+}
+
+$colours: (
+
+  /*
+  Gray Palette
+
+  Markup: colors.hbs
+
+  #f2f2ef - swatch(gray, lightest);
+  #a5a8aa - swatch(gray, lighter);
+  #a0a0a8 - swatch(gray, light);       // Used as placeholder text
+  #595460 - swatch(gray, base);        // Used for text in from  fields and additional text (ie. below buttons)
+  #35333f - swatch(gray, dark);
+  #211e2d - swatch(gray, darker);      // Used for text colour
+  #050521 - swatch(gray, darkest);     // Used for background of nav bar and header bar
+
+  Styleguide 1.colourPalette.grays
+  */
+
+  gray: (
+    lightest: #f2f2ef,
+    lighter: #a5a8aa,
+    light: #a0a0a8,
+    base: #595460,
+    dark: #35333f,
+    darker: #211e2d,
+    darkest: #050521,
+  ),
+
+  /*
+  Primary Colours
+
+  Markup: colors.hbs
+
+  #497cf4 - swatch(primary, blue);
+  #385eb7 - swatch(primary, blue-dark);
+  #6d99f4 - swatch(primary, blue-light);
+  #91b2f7 - swatch(primary, blue-lighter);
+  #1cf982 - swatch(primary, green);
+  #16bc60 - swatch(primary, green-dark);
+  #77fcb2 - swatch(primary, green-light);
+
+  Styleguide 1.colourPalette.primary
+  */
+
+  primary:(
+    blue: #497cf4,         // main brand colour
+    blue-dark: #385eb7,    // used for button shadows
+    blue-light: #6d99f4,
+    blue-lighter: #91b2f7,
+    green: #1cf982,
+    green-dark: #16bc60,
+    green-light: #77fcb2,
+  ),
+
+
+  /*
+  UI Colours
+
+  Markup: colors.hbs
+
+  #d9534f - swatch(ui, error);
+  #5cb85c - swatch(ui, success);
+  #5bc0de - swatch(ui, info);
+  #f0ad4e - swatch(ui, warning);
+
+  Styleguide 1.colourPalette.ui
+  */
+
+  ui:(
+    error: #d9534f,
+    success: #5cb85c,
+    info: #5bc0de,
+    warning : #f0ad4e
+  ),
+
+
+);

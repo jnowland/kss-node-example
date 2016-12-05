@@ -1,0 +1,63 @@
+// Generate Background Colors
+
+$kss-colors-gray: create-kss-colors(gray, '.Bg-gray-');
+$kss-colors-primary: create-kss-colors(primary, '.Bg-');
+$kss-colors-ui: create-kss-colors(ui, '.Bg-');
+
+/*
+Backgrounds
+
+The various backgrounds and colours.
+
+Markup: branding/swatches.hbs
+
+#{$kss-colors-gray}#{$kss-colors-primary}#{$kss-colors-ui}
+
+Styleguide 1.colourPalette.backgrounds
+*/
+
+/* Loop over all colors */
+@each $name, $color in map-get($colours, gray) {
+  .Bg-gray-#{$name} {
+    background-color: $color;
+  }
+  .Text-gray-#{$name} {
+    color: $color;
+  }
+}
+
+@each $name, $color in map-get($colours, primary) {
+  .Bg-#{$name} {
+    background-color: $color;
+  }
+  .Text-#{$name} {
+    color: $color;
+  }
+}
+
+@each $name, $color in map-get($colours, ui) {
+  .Bg-#{$name} {
+    background-color: $color;
+  }
+  .Text-#{$name} {
+    color: $color;
+  }
+}
+
+
+
+$kss-text-colors-gray: create-kss-colors(gray, '.Text-gray-');
+$kss-text-colors-primary: create-kss-colors(primary, '.Text-');
+$kss-text-colors-ui: create-kss-colors(ui, '.Text-');
+
+/*
+Colors
+
+The text colours.
+
+Markup: branding/type-colors.hbs
+
+#{$kss-text-colors-gray}#{$kss-text-colors-primary}#{$kss-text-colors-ui}
+
+Styleguide 1.colourPalette.textColors
+*/
